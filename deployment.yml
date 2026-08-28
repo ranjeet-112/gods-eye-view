@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gods-eye-view
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: gods-eye-view
+
+  template:
+    metadata:
+      labels:
+        app: gods-eye-view
+
+    spec:
+      containers:
+        - name: gods-eye-view
+
+          image: ghcr.io/ranjeet-112/gods-eye-view:latest
+
+          imagePullPolicy: Always
+
+          ports:
+            - name: http
+              containerPort: 4173
+              protocol: TCP
+
+          env:
+            - name: GOOGLE_MAPS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: gods-eye-view-secrets
+                  key: GOOGLE_MAPS_API_KEY
