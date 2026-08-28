@@ -19,7 +19,7 @@ spec:
       containers:
         - name: gods-eye-view
 
-          image: ghcr.io/ranjeet-112/gods-eye-view:latest
+          image: ghcr.io/ranjeet-112/gods-eye-view:10bbfd7
 
           imagePullPolicy: Always
 
